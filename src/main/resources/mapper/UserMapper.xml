@@ -5,11 +5,11 @@
 
 <mapper namespace="mapper.UserMapper"> <!-- 对应接口全类名 -->
     <!-- 插入用户（用户名为主键，重复会报错） -->
-    <insert id="insertUser" parameterType="User"> <!-- parameterType 为实体类别名 -->
-        INSERT INTO user (username, password)
-        VALUES (#{username}, #{password})
-    </insert>
-    <select id="方法名">
-        select  * from user where usernam = #{usernam} and password = #{password}
-    </select>
+<!--    <insert id="insertUser" parameterType="User"> &lt;!&ndash; parameterType 为实体类别名 &ndash;&gt;-->
+<!--        INSERT INTO user (username, password)-->
+<!--        VALUES (#{username}, #{password})-->
+<!--    </insert>-->
+<!--    <select id="方法名">-->
+<!--        select  * from user where usernam = #{usernam} and password = #{password}-->
+<!--    </select>-->
 </mapper>

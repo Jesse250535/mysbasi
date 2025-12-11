@@ -9,9 +9,11 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl implements UserService{
     @Autowired
     private UserMapper userMapper;
-
     @Override
-    public void register(User user) {
+    public void register(User user)
+    {
+        user.setUsername(user.getUsername());
+        user.setPassword(user.getPassword());
         userMapper.insertUser(user);
     }
 }
