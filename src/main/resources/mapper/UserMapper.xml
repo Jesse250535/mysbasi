@@ -10,6 +10,6 @@
 <!--        VALUES (#{username}, #{password})-->
 <!--    </insert>-->
 <!--    <select id="方法名">-->
-<!--        select  * from user where usernam = #{usernam} and password = #{password}-->
+<!--        select  * from user where username = #{username} and password = #{password}-->
 <!--    </select>-->
 </mapper>

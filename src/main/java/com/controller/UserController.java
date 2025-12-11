@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class UserController {
@@ -14,14 +15,18 @@ public class UserController {
     // 跳转到注册界面=》方法：知道方法如何编写即可，方法：有参数有返回值  有参数无返回值  无参数有返回值 无参数无返回值
     @Autowired
     private UserService userService;
-    @RequestMapping("/showRegister")
+    @RequestMapping(value = "/register", method = RequestMethod.GET)
     public  String  showRegister(){
         return  "register";
     }
+    @RequestMapping(value = "/register", method = RequestMethod.GET)
+    public String showRegisterForm(){
+        return "register";
+    }
 
     // 实现注册功能：1.获取数据
-    @RequestMapping("/register")
-    public String register(String username,String password){
+    @RequestMapping(value = "/doregister",method = RequestMethod.POST)
+    public String doregister(String username,String password){
 
         User user = new User();
         user.setUsername(username);
