@@ -3,7 +3,12 @@ package com.service;
 import com.model.User;
 import org.apache.ibatis.annotations.Insert;
 
+import java.util.List;
+
 public interface UserService {
-    @Insert("insert into user values(#{username},#{password})")
-    void register(User user);
+
+    void insertUser(User user);
+
+    User findUser(User user);
+    List<User> findAllUser();
 }

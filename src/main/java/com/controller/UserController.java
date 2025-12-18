@@ -1,13 +1,14 @@
 package com.controller;
 
-import com.mapper.UserMapper;
+
 import com.model.User;
 import com.service.UserService;
-import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class UserController {
@@ -15,29 +16,43 @@ public class UserController {
     // 跳转到注册界面=》方法：知道方法如何编写即可，方法：有参数有返回值  有参数无返回值  无参数有返回值 无参数无返回值
     @Autowired
     private UserService userService;
-    @RequestMapping(value = "/register", method = RequestMethod.GET)
+    @RequestMapping( "/showRegister")
     public  String  showRegister(){
-        return  "register";
-    }
-    @RequestMapping(value = "/register", method = RequestMethod.GET)
-    public String showRegisterForm(){
-        return "register";
+        return  "/register";
     }
 
     // 实现注册功能：1.获取数据
-    @RequestMapping(value = "/doregister",method = RequestMethod.POST)
-    public String doregister(String username,String password){
+    @RequestMapping( value = "/register", method = RequestMethod.POST)
+    public String doregister(@RequestParam String username,@RequestParam String password){
 
         User user = new User();
         user.setUsername(username);
         user.setPassword(password);
-//        userMapper.insertUser(user);
-        userService.register(user);
+        userService.insertUser(user);
         return "registerSuccess";
     }
     // 1.登录界面
+    @RequestMapping( value = "/showLogin", method = RequestMethod.GET)
+    public  String  showLogin(){
+        return  "/login";
+    }
 
-// 1. 完成注册
-// 2. 登录功能
+    @RequestMapping( value = "/login", method = RequestMethod.POST)
+    public String dologin(@RequestParam String username, @RequestParam String password, Model model){
+        User user = new User();
+        user.setUsername(username);
+        user.setPassword(password);
+        User loguser = userService.findUser(user);
+        if(loguser != null){
+            model.addAttribute("users", userService.findAllUser());
+           return "loghome";
+        }else {
+            model.addAttribute("error","用户名或密码错误");
+            model.addAttribute("username",username);
+            return "login";
+        }
+    }
+// 实现查询用户信息
+
 
 }

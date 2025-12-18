@@ -6,6 +6,6 @@
 <body>
 <h1>注册成功！</h1>
 <p>用户名：${param.username}</p>
-<a href="/showRegister">继续注册</a>
+<a href="${pageContext.request.contextPath}/showRegister">继续注册</a>
 </body>
 </html>
