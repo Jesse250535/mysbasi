@@ -1,0 +1,48 @@
+注册：
+网站 =》数据库
+web =》MySQL
+jsp =>mysql
+jsp=>java =>mysql
+jsp =>servlet=>mysql
+jsp=>springmvc=>jdbc=>mysql
+jsp=>springmvc=>mybatis=>mysql
+jsp=>ssm(spring springmvc+mybatis)=》mysql
+
+编写代码流程：
+jsp<=>controller<=》service<=》mapper<=>mysql
+
+
+mysql=>mapper=>service=>controller=>jsp
+一个功能一条SQL语句一个方法
+显示所有的用户信息
+查询
+方法
+一、mapper:操作数据库（crud:添加 修改 删除 查询）
+1.SQL语句
+2.编写方法
+二、service：处理业务逻辑（密码加密）,调用mapper层的方法
+1.接口方法：跟mapper的方法一样
+2.实现类：实现接口的方法
+3.调用mapper 的方法：调用某个类的方法就需要先创建该类的对象（使用了spring自动注入方式）
+
+三、controller：
+1.编写映射路径（接收请求），跟jsp交互（获取jsp的数据）
+2.调用service的方法：调用某个类的方法就需要先创建该类的对象
+//    一个功能  一条SQL语句  一个方法
+//     注册功能
+//    方法就写在接口里边。通过接口的方式绑定SQL语句。
+//    如何编写方法？通过SQL语句去确定返回值类型以及参数类型和参数
+//    1.方法的结构：方法名：自定义，标识符规则 => public 返回值类型 方法名(参数类型 参数);
+//    2.确定返回值类型：跟SQL语句的执行结果一样。
+//    (修改 删除 添加的返回值类型是int或者没有返回值void)
+//    3.参数类型和参数如何确定：SQL语句的问号（条件），条件多少个就有多少个参数 .如果是多个参数，并且多个参数都是实体类的属性值，那么就直接使用对象的方式作为参数
+     //     查询语句的返回值类型：
+     //     基本数据类型（byte short int long float  double char boolean）
+     //     String：查询结果只有一个列名的时候。就有一个值、
+     //     对象类型:实体类的对象：如果查询结果有多个，也就是一行的时候。一行多值
+     //     集合类型：List集合 :查询结果是多行数据的时候就使用集合
+
+
+
+
+

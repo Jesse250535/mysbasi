@@ -20,11 +20,13 @@
     <tr>
         <th>用户名</th>
         <th>密码</th>
+        <th>操作</th>
     </tr>
     <c:forEach items="${users}" var="user2">
         <tr>
             <td>${user2.username}</td>
             <td>${user2.password}</td>
+            <td><a href="/deleteUser?username=${user2.username}">删除</a></td>
         </tr>
     </c:forEach>
 </table>
