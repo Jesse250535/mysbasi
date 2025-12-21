@@ -59,6 +59,12 @@ public class UserController {
         model.addAttribute("users", userService.findAllUser());
         return "loghome";
     }
+
+    @RequestMapping( value = "/userlist", method = RequestMethod.GET)
+    public String showAllUser1(Model model){
+        model.addAttribute("users", userService.findAllUser());
+        return "userlist";
+    }
 // 实现根据用户名删除用户信息
     @RequestMapping( value = "/deleteUser", method = RequestMethod.GET)
     public String deleteUser(@RequestParam String username, Model model){
@@ -72,6 +78,25 @@ public class UserController {
         }
     }
 
+    //修改用户密码
+    @RequestMapping("/showChangePassword")
+    public String showChangePassword(){
+        return "changePassword";
+    }
+
+    @RequestMapping("/changePassword")
+    public String updatePassword(String username, String newpassword,String cusername, Model model){
+        if (newpassword.equals(cusername)){
+            User user = new User();
+            user.setUsername(username);
+            user.setPassword(newpassword);
+            userService.updatePassword(user);
+            return "redirect:/showAllUser";
+        }else {
+            model.addAttribute("error","两次输入的密码不一致");
+            return "changePassword";
+        }
+    }
 
 
 }

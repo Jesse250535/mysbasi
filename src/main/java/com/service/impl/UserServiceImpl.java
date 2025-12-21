@@ -34,8 +34,8 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public boolean updatepassword(String username, String oldpassword, String newpassword) {
-        return false;
+    public int updatePassword(User user) {
+        return userMapper.updatePassword(user);
     }
 
 

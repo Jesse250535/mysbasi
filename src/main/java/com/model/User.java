@@ -4,6 +4,16 @@ public class User {
     private String username; // 用户名（主键）
     private String password; // 密码
 
+    private String imageUrl;
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
     public String getUsername() {
         return username;
     }
@@ -25,6 +35,7 @@ public class User {
         return "User{" +
                 "username='" + username + '\'' +
                 ", password='" + password + '\'' +
+                ", imageUrl='" + imageUrl + '\'' +
                 '}';
     }
 }

@@ -21,6 +21,8 @@
     <label>密码：</label>
     <input type="password" name="password">
     <br>
+    <label><a href="/showUpdatePassword?username=${user.username}"> 忘记密码？</a></label>
+    <br>
     <% if (request.getAttribute("error") != null){   %>
     <div style="color: red"><%= request.getAttribute("error")%></div>
     <% } %>
